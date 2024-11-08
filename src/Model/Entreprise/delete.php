@@ -1,5 +1,5 @@
 <?php
-require_once('connect.php');
+require_once('config/connect.php');
 
 // Vérification de l'ID dans l'URL
 if (isset($_GET['id']) && !empty($_GET['id'])) {
@@ -17,7 +17,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $query->execute();
 
     // Redirection après suppression
-    header('Location: index.php');
+    header('Location: index.php');   // MODIFIER RETOUR APRES SUPRESSION
 }
 
-require_once('close.php');
+require_once('config/close.php');
