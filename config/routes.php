@@ -1,34 +1,5 @@
 <?php
-
-/*
-require_once  '../src/Controleur/accueil.php';
-
-use App\Controle;
-
-// Utiliser la classe MonControleur
-use Controleur\accueil;
-
-$controleur = new accueil();
-
-// Appeler une méthode de la classe
-$controleur->affiche();
-
-*/
-
-
 use App\Controleur\Controle;
-
-// Charger l'autoloader de Composer pour Twig
-require_once '../vendor/autoload.php';
-
-// Charger la configuration de la base de données
-require_once '../config/database.php';
-
-// Initialiser Twig
-$loader = new \Twig\Loader\FilesystemLoader('../views'); // Dossier contenant les fichiers .twig
-$twig = new \Twig\Environment($loader, [
-    'cache' => '../cache',  // Optionnel, pour le cache des templates (recommandé en prod)
-]);
 
 // Récupérer les paramètres de l'URL
 $action = $_GET['action'] ?? null; // Action de la route
@@ -41,7 +12,7 @@ $method = null;
 switch ($action) {
     case 'accueil':
         $controller = 'Controle';
-        $method = 'listUsers';
+        $method = 'accueil';
         break;
     case 'edit':
         $controller = 'Controle';
@@ -64,8 +35,8 @@ switch ($action) {
 // Vérifier si le contrôleur et la méthode sont définis et appelés
 if ($controller && $method) {
     require_once '../config/database.php'; // Connexion à la base de données
-    $controllerClass = 'App\\Controleur\\' . $controller;
-    $controllerObject = new $controllerClass($pdo, $twig);
+    $controllerClass = 'App\\Controller\\' . $controller;
+    $controllerObject = new $controllerClass($pdo);
 
     // Appeler la méthode du contrôleur avec l'ID si besoin
     if ($action == 'edit' || $action == 'update' || $action == 'delete') {
