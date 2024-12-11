@@ -1,11 +1,14 @@
 <?php
 
 
+require_once  '../src/Controleur/accueil.php';
 
-$loader = new \Twig\Loader\FilesystemLoader('vue');  // Le répertoire où se trouvent vos fichiers .twig
-$twig = new \Twig\Environment($loader, [
-    'cache' => false, // Vous pouvez activer le cache dans un environnement de production
-]);
+use App\Controle;
 
-// Rendu du template avec les données
-echo $twig->render('index.twig', ['users' => $result]);
+// Utiliser la classe MonControleur
+use Controleur\accueil;
+
+$controleur = new accueil();
+
+// Appeler une méthode de la classe
+$controleur->affiche();
