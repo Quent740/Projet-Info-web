@@ -1,5 +1,5 @@
 <?php
-require_once('connect.php');
+require_once('config/connect.php');
 require_once 'vendor/autoload.php'; // Pour charger Twig
 
 // Initialisation de Twig
@@ -62,4 +62,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 echo $twig->render('add.twig', ['session' => $_SESSION]);
 
 require_once('close.php');
-?>
+

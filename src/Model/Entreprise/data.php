@@ -1,5 +1,4 @@
 <?php
-// data.php
 function getData(){
 // tableau associatif des données
     $data = array(
@@ -16,4 +15,3 @@ function getData(){
     );
     return $data;
 }
-?>
