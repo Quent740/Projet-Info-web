@@ -4,7 +4,7 @@ class Controle {
     protected function rendu($view,$data = []) {
 
 
-        $loader = new \Twig\Loader\FilesystemLoader('vue');
+        $loader = new \Twig\Loader\FilesystemLoader('../vue/accueil.twig');
         $twig = new \Twig\Environment($loader, [
             'cache' => false,
         ]);
@@ -12,9 +12,9 @@ class Controle {
         echo $twig->render($view,$data);
 
     }
-}*/
+}
+*/
 
-// App/Controleur/Controle.php
 namespace App\Controleur;
 
 use Twig\Environment;
@@ -22,6 +22,18 @@ use Twig\Environment;
 class Controle {
     private $pdo;
     private $twig;
+
+    protected function rendu($view,$data = []) {
+        
+
+        $loader = new \Twig\Loader\FilesystemLoader('../vue/accueil.twig');
+        $twig = new \Twig\Environment($loader, [
+            'cache' => false,
+        ]);
+
+        echo $twig->render($view,$data);
+
+    }
 
     public function __construct($pdo, Environment $twig) {
         $this->pdo = $pdo;

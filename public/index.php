@@ -1,22 +1,16 @@
 <?php
 
-/*
+
 require_once  '../src/Controleur/accueil.php';
+require_once  '../src/Controleur/Controle.php';
 
-use App\Controle;
+use App\Controleur\Controle;
+use App\Controleur\Accueil;
 
-// Utiliser la classe MonControleur
-use Controleur\accueil;
-
-$controleur = new accueil();
+$controleur = new Accueil($pdo, $twig);
 
 // Appeler une méthode de la classe
 $controleur->affiche();
-
-*/
-
-
-use App\Controleur\Controle;
 
 // Charger l'autoloader de Composer pour Twig
 require_once '../vendor/autoload.php';
@@ -25,7 +19,7 @@ require_once '../vendor/autoload.php';
 require_once '../config/database.php';
 
 // Initialiser Twig
-$loader = new \Twig\Loader\FilesystemLoader('../views'); // Dossier contenant les fichiers .twig
+$loader = new \Twig\Loader\FilesystemLoader('../src/vue/accueil.twig'); // Dossier contenant les fichiers .twig
 $twig = new \Twig\Environment($loader, [
     'cache' => '../cache',  // Optionnel, pour le cache des templates (recommandé en prod)
 ]);
