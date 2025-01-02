@@ -1,20 +1,4 @@
 <?php
-/*
-class Controle {
-    protected function rendu($view,$data = []) {
-
-
-        $loader = new \Twig\Loader\FilesystemLoader('../vue/accueil.twig');
-        $twig = new \Twig\Environment($loader, [
-            'cache' => false,
-        ]);
-
-        echo $twig->render($view,$data);
-
-    }
-}
-*/
-
 namespace App\Controleur;
 
 use Twig\Environment;
@@ -23,21 +7,20 @@ class Controle {
     private $pdo;
     private $twig;
 
+    public function __construct($pdo, Environment $twig) {
+        $this->pdo = $pdo;
+        $this->twig = $twig;
+    }
+
     protected function rendu($view,$data = []) {
         
-
-        $loader = new \Twig\Loader\FilesystemLoader('../vue/accueil.twig');
+        $loader = new \Twig\Loader\FilesystemLoader('../src/vue');
         $twig = new \Twig\Environment($loader, [
             'cache' => false,
         ]);
 
-        echo $twig->render($view,$data);
+        echo $this->$twig->render($view,$data);
 
-    }
-
-    public function __construct($pdo, Environment $twig) {
-        $this->pdo = $pdo;
-        $this->twig = $twig;
     }
 
     public function listUsers() {
