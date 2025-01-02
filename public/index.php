@@ -2,6 +2,7 @@
 
 
 use App\Controleur\Accueil;
+use App\Test;
 
 // Charger l'autoloader de Composer pour Twig
 require_once '../vendor/autoload.php';
@@ -15,10 +16,13 @@ $twig = new Twig\Environment($loader, [
     'cache' => '../cache',  // Optionnel, pour le cache des templates (recommandé en prod)
 ]);
 
-$controleur = new Accueil($pdo, $twig);
+$test = new Test();
+echo $test->hello();
+
+//$controleur = new Accueil($pdo, $twig);
 
 // Appeler une méthode de la classe
-$controleur->affiche();
+//$controleur->affiche();
 
 // Récupérer les paramètres de l'URL
 $action = $_GET['action'] ?? null; // Action de la route
