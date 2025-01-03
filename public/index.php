@@ -1,8 +1,6 @@
 <?php
 
-
 use App\Controleur\Accueil;
-use App\Test;
 
 // Charger l'autoloader de Composer pour Twig
 require_once '../vendor/autoload.php';
@@ -10,19 +8,10 @@ require_once '../vendor/autoload.php';
 // Charger la configuration de la base de données
 require_once '../config/database.php';
 
-// Initialiser Twig
-$loader = new Twig\Loader\FilesystemLoader('../src/vue'); // Dossier contenant les fichiers .twig
-$twig = new Twig\Environment($loader, [
-    'cache' => '../cache',  // Optionnel, pour le cache des templates (recommandé en prod)
-]);
-
-$test = new Test();
-echo $test->hello();
-
-//$controleur = new Accueil($pdo, $twig);
+$controleur = new Accueil($pdo, $twig);
 
 // Appeler une méthode de la classe
-//$controleur->affiche();
+$controleur->affiche();
 
 // Récupérer les paramètres de l'URL
 $action = $_GET['action'] ?? null; // Action de la route

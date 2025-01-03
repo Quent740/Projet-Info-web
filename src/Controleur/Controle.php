@@ -12,14 +12,12 @@ class Controle {
         $this->twig = $twig;
     }
 
-    protected function rendu($view,$data = []) {
+    public function rendu($view,$data = []) {
         
         $loader = new \Twig\Loader\FilesystemLoader('../src/vue');
-        $twig = new \Twig\Environment($loader, [
-            'cache' => false,
-        ]);
+        $twig = new \Twig\Environment($loader);
 
-        echo $this->$twig->render($view,$data);
+        return $this->$twig->render($view,$data);
 
     }
 

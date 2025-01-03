@@ -1,0 +1,13 @@
+{
+  "name": "epul3a/mvc-crud-project",
+  "description": "Application CRUD MVC en PHP avec Twig et PDO",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "require": {
+    "twig/twig": "^3.0"
+  }
+}
+

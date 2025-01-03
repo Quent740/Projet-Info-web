@@ -36,6 +36,7 @@
         "psr-4" : {
             "Twig\\" : "src/"
         }
+    
     },
     "autoload-dev": {
         "psr-4" : {
