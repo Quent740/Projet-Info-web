@@ -1,13 +1,21 @@
 <?php
 
 use App\Controleur\Accueil;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
-// Charger l'autoloader de Composer pour Twig
+// Charger l'autoloader de Composer
 require_once '../vendor/autoload.php';
 
 // Charger la configuration de la base de données
 require_once '../config/database.php';
 
+// Initialiser PDO
+$pdo = new PDO($dsn, $user, $pass, $options);
+
+// Initialiser Twig
+$loader = new FilesystemLoader(__DIR__ . '/../src/vue');
+$twig = new Environment($loader);
 $controleur = new Accueil($pdo, $twig);
 
 // Appeler une méthode de la classe

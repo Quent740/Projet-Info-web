@@ -14,10 +14,10 @@ class Controle {
 
     public function rendu($view,$data = []) {
         
-        $loader = new \Twig\Loader\FilesystemLoader('../src/vue');
+        $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/../../vue');
         $twig = new \Twig\Environment($loader);
 
-        return $this->$twig->render($view,$data);
+        return $this->twig->render($view,$data);
 
     }
 
