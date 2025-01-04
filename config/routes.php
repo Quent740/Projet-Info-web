@@ -1,5 +1,4 @@
 <?php
-use P2114792\Projet\Controleur\Accueil;
 
 // Récupérer les paramètres de l'URL
 $action = $_GET['action'] ?? null; // Action de la route
@@ -7,8 +6,8 @@ $id = $_GET['id'] ?? null;         // ID dans les routes (ex: pour 'edit', 'dele
 $pdo = null;                        
 
 // Initialisation du contrôleur
-$controleur = null;
-$method = null;
+$controleur = 'Controle';
+$method = 'accueil';
 
 switch ($action) {
     case 'accueil':
@@ -29,7 +28,7 @@ switch ($action) {
         break;
     default:
         $controller = 'Controle';
-        $method = 'listUsers';
+        $method = 'accueil'; //listUsers
         break;
 }
 

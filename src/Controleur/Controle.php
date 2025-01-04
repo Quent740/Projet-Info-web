@@ -9,6 +9,11 @@ class Controle {
         $this->userModel = new User($pdo);
     }
 
+    public function accueil() {
+        // Afficher la page d'accueil
+        echo $this->renderView('accueil.twig');
+    }
+
     public function listUsers() {
         // Afficher la liste des utilisateurs
         $users = $this->userModel->getAllUsers();
