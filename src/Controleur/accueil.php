@@ -1,5 +1,5 @@
 <?php
-namespace App\Controleur;
+namespace P2114792\Projet\Controleur;
 
 class Accueil extends Controle{
     public function affiche(){

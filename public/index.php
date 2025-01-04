@@ -1,6 +1,6 @@
 <?php
 
-use App\Controleur\Accueil;
+use P2114792\Projet\Controleur\Accueil;
 
 // Charger l'autoloader de Composer pour Twig
 require_once '../vendor/autoload.php';
