@@ -1,20 +1,18 @@
 <?php
 namespace P2114792\Projet\Controleur;
 
-use Twig\Environment;
-
 class Controle {
     private $pdo;
     private $twig;
 
-    public function __construct($pdo, Environment $twig) {
+    public function __construct($pdo, $twig) {
         $this->pdo = $pdo;
         $this->twig = $twig;
     }
 
     public function rendu($view,$data = []) {
         
-        $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/../../vue');
+        $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'../src/vue');
         $twig = new \Twig\Environment($loader);
 
         return $this->twig->render($view,$data);

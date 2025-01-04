@@ -1,6 +1,6 @@
 <?php
 $host = '127.0.0.1'; // Votre hôte de base de données
-$db = 'mvc_crud';     // Le nom de votre base de données
+$db = 'getstages';     // Le nom de votre base de données
 $user = 'root@localhost';       // Utilisateur MySQL
 $pass = '';           // Mot de passe MySQL
 $charset = 'utf8mb4'; // Jeu de caractères
