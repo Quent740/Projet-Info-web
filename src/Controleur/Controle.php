@@ -51,7 +51,7 @@ class Controle {
             $stmt->execute([$name, $email, $id]);
 
             // Rediriger vers la page d'accueil après la mise à jour
-            header("Location: index.php?action=accueil");
+            header("Location: /projet-info-web/public/index.php?action=accueil");
         } else {
             // Afficher le formulaire d'édition
             $this->editUser($id);
@@ -64,6 +64,6 @@ class Controle {
         $stmt->execute([$id]);
 
         // Rediriger vers la page d'accueil après suppression
-        header("Location: index.php?action=accueil");
+        header("Location: /projet-info-web/public/index.php?action=accueil");
     }
 }
