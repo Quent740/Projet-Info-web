@@ -1,3 +1,5 @@
+// /public/index.php
+
 <?php
 
 use P2114792\Projet\Controleur\Accueil;
