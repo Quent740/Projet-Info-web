@@ -1,7 +1,7 @@
 <?php
 $host = '127.0.0.1'; // Votre hôte de base de données
-$db = 'getstages';     // Le nom de votre base de données
-$user = 'root@localhost';       // Utilisateur MySQL
+$db = 'bdd_geststages';     // Le nom de votre base de données
+$user = 'root';       // Utilisateur MySQL
 $pass = '';           // Mot de passe MySQL
 $charset = 'utf8mb4'; // Jeu de caractères
 
@@ -12,8 +12,8 @@ $options = [
     PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 
-//try {
-//    $pdo = new PDO($dsn, $user, $pass, $options);
-//} catch (\PDOException $e) {
-//    throw new \PDOException($e->getMessage(), (int)$e->getCode());
-//}
+try {
+    $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+    throw new \PDOException($e->getMessage(), (int)$e->getCode());
+}

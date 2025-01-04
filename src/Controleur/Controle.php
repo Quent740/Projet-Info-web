@@ -1,67 +1,57 @@
 <?php
 namespace P2114792\Projet\Controleur;
+use P2114792\Projet\Model\User;
 
 class Controle {
-    private $pdo;
-    private $twig;
+    private $userModel;
 
-    public function __construct($pdo, $twig) {
-        $this->pdo = $pdo;
-        $this->twig = $twig;
-    }
-
-    public function rendu($view,$data = []) {
-        
-        $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'../src/vue');
-        $twig = new \Twig\Environment($loader);
-
-        return $this->twig->render($view,$data);
-
+    public function __construct($pdo) {
+        $this->userModel = new User($pdo);
     }
 
     public function listUsers() {
-        // Récupérer tous les utilisateurs de la base de données
-        $stmt = $this->pdo->query("SELECT * FROM users");
-        $users = $stmt->fetchAll();
+        // Afficher la liste des utilisateurs
+        $users = $this->userModel->getAllUsers();
+        echo $this->renderView('list.twig', ['users' => $users]);
+    }
 
-        // Rendre la vue avec les utilisateurs via Twig
-        echo $this->twig->render('list.twig', ['users' => $users]);
+    public function createUser() {
+        // Ajouter un utilisateur (demande de POST)
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $this->userModel->createUser($name, $email);
+            header("Location: /projet-info-web/public/index.php?action=listUsers");
+        } else {
+            echo $this->renderView('create.twig');
+        }
     }
 
     public function editUser($id) {
-        // Récupérer l'utilisateur par son ID
-        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id = ?");
-        $stmt->execute([$id]);
-        $user = $stmt->fetch();
-
-        // Rendre la vue d'édition avec l'utilisateur via Twig
-        echo $this->twig->render('edit.twig', ['user' => $user]);
+        // Modifier un utilisateur
+        $user = $this->userModel->getUserById($id);
+        echo $this->renderView('edit.twig', ['user' => $user]);
     }
 
     public function updateUser($id) {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Récupérer les données du formulaire
+        // Mettre à jour un utilisateur
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = $_POST['name'];
             $email = $_POST['email'];
-
-            // Mettre à jour l'utilisateur dans la base de données
-            $stmt = $this->pdo->prepare("UPDATE users SET name = ?, email = ? WHERE id = ?");
-            $stmt->execute([$name, $email, $id]);
-
-            // Rediriger vers la page d'accueil après la mise à jour
-            header("Location: /projet-info-web/public/index.php?action=accueil");
-        } else {
-            // Afficher le formulaire d'édition
-            $this->editUser($id);
+            $this->userModel->updateUser($id, $name, $email);
+            header("Location: /projet-info-web/public/index.php?action=listUsers");
         }
     }
 
     public function deleteUser($id) {
-        // Supprimer un utilisateur de la base de données
-        $stmt = $this->pdo->prepare("DELETE FROM users WHERE id = ?");
-        $stmt->execute([$id]);
+        // Supprimer un utilisateur
+        $this->userModel->deleteUser($id);
+        header("Location: /projet-info-web/public/index.php?action=listUsers");
+    }
 
-        // Rediriger vers la page d'accueil après suppression
-        header("Location: /projet-info-web/public/index.php?action=accueil");
+    private function renderView($view, $data = []) {
+        $loader = new \Twig\Loader\FilesystemLoader('../src/vue');
+        $twig = new \Twig\Environment($loader);
+        return $twig->render($view, $data);
     }
 }

@@ -4,9 +4,10 @@ use P2114792\Projet\Controleur\Accueil;
 // Récupérer les paramètres de l'URL
 $action = $_GET['action'] ?? null; // Action de la route
 $id = $_GET['id'] ?? null;         // ID dans les routes (ex: pour 'edit', 'delete')
+$pdo = null;                        
 
 // Initialisation du contrôleur
-$controller = null;
+$controleur = null;
 $method = null;
 
 switch ($action) {
