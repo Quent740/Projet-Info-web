@@ -59,7 +59,7 @@ if ($controller && $method) {
     $controllerObject = new $controllerClass($pdo);
 
     // Appeler la méthode du contrôleur avec l'ID si besoin
-    if ($action == 'edit' || $action == 'update' || $action == 'delete') {
+    if ($action == 'edit' || $action == 'update' || $action == 'delete' ||$action == 'Stagiaire' || $action == 'Entreprise' || $action == 'Deconnection' || $action == 'Inscrire' || $action == 'Aide') {
         $controllerObject->$method($id);
     } else {
         $controllerObject->$method();
