@@ -8,7 +8,7 @@ class Stagiere {
         $this->pdo = $pdo;
     }
 
-    public function getAllUsers() {
+    public function getAllEntreprise() {
         $stmt = $this->pdo->query("SELECT * FROM entreprise");
         return $stmt->fetchAll();
     }
