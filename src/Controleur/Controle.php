@@ -14,6 +14,31 @@ class Controle {
         echo $this->renderView('accueil.twig');
     }
 
+    public function Entreprise() {
+        // Afficher la page d'accueil
+        echo $this->renderView('Entreprise.twig');
+    }
+
+    public function Stagiaire() {
+        // Afficher la page d'accueil
+        echo $this->renderView('Stagiaire.twig');
+    }
+
+    public function Inscrire() {
+        // Afficher la page d'accueil
+        echo $this->renderView('Inscrire.twig');
+    }
+
+    public function Aide() {
+        // Afficher la page d'accueil
+        echo $this->renderView('Aide.twig');
+    }
+
+    public function Deconnection() {
+        // Afficher la page d'accueil
+        echo $this->renderView('Deconnection.twig');
+    }
+    
     public function listUsers() {
         // Afficher la liste des utilisateurs
         $users = $this->userModel->getAllUsers();

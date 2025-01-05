@@ -26,6 +26,26 @@ switch ($action) {
         $controller = 'Controle';
         $method = 'deleteUser';
         break;
+    case 'Stagiaire':
+        $controller = 'Controle';
+        $method = 'Stagiaire';
+        break;
+    case 'Entreprise':
+        $controller = 'Controle';
+        $method = 'Entreprise';
+        break;
+    case 'Deconnection':
+        $controller = 'Controle';
+        $method = 'Deconnection';
+        break;
+    case 'Inscrire':
+        $controller = 'Controle';
+        $method = 'Inscrire';
+        break;
+    case 'Aide':
+        $controller = 'Controle';
+        $method = 'Aide';
+        break;
     default:
         $controller = 'Controle';
         $method = 'accueil'; //listUsers
