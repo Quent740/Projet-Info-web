@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - Stage BTS</title>
+    <link rel="stylesheet" href="CSS/general.css">
+</head>
+<body>
+
+<!-- Menu de navigation -->
+<nav>
+    <a href="index.php?action=Accueil" id="onglet_accueil"><span>Accueil</span></a>
+    <a href="index.php?action=Entreprise" id="onglet_entreprise"><span>Entreprise</span></a>
+    <a href="index.php?action=Stagiaire" id="onglet_stagiaire"><span>Stagiaire</span></a>
+    <a href="index.php?action=Inscrire" id="onglet_inscrire" class="actif"><span>Inscription</span></a>
+    <a href="index.php?action=Aide" id="onglet_aide"><span>Aide</span></a>
+    <a href="index.php?action=Deconnection" id="onglet_deconnection"><span>Déconnexion</span></a>
+
+    <div class="bottom">
+        <a href="#" id="icon_droite"><span></span></a>
+        <a href="#" id="icon_gauche"><span></span></a>
+    </div>
+</nav>
+
+<!-- Zone de contenu principal -->
+<div id="corps">
+    <header>
+        <h1>Inscription à un Stage</h1>
+    </header>
+
+    <hr>
+
+    <!-- Formulaire d'inscription -->
+    <form action="{{ action_url }}" method="post" id="form_inscription">
+        <div class="section" id="section_contact">
+            <h2>Contact</h2>
+            <label for="entreprise">Entreprise* :</label>
+            <select name="entreprise" id="entreprise">
+                {% for entreprise in entreprises %}
+                    <option value="{{ entreprise.id }}">{{ entreprise.nom }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="etudiant">Étudiant* :</label>
+            <select name="etudiant" id="etudiant">
+                {% for etudiant in etudiants %}
+                    <option value="{{ etudiant.id }}">{{ etudiant.nom }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="professeur">Professeur* :</label>
+            <select name="professeur" id="professeur">
+                {% for professeur in professeurs %}
+                    <option value="{{ professeur.id }}">{{ professeur.nom }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="section" id="section_description_stage">
+            <h2>Description du Stage</h2>
+            <label for="date_debut">Date de début du stage* :</label>
+            <input type="date" name="date_debut" id="date_debut" required>
+
+            <label for="date_fin">Date de fin du stage* :</label>
+            <input type="date" name="date_fin" id="date_fin" required>
+
+            <label for="type_stage">Type de stage* :</label>
+            <select name="type_stage" id="type_stage">
+                <option value="aucun">Aucun</option>
+                <option value="stage">Stage</option>
+                <option value="alternance">Alternance</option>
+            </select>
+
+            <label for="description_projet">Description du projet :</label>
+            <textarea name="description_projet" id="description_projet"></textarea>
+
+            <label for="observation">Observation :</label>
+            <textarea name="observation" id="observation"></textarea>
+        </div>
+
+        <p class="info">Les champs comportant le symbole * sont obligatoires</p>
+
+        <div class="action">
+            <button type="submit" class="btn btn-primary">Inscrire</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
