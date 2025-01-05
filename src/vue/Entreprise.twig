@@ -29,25 +29,28 @@
         <h2>{{ entreprise.nom }}</h2>
         <div>
             <h3>Entrée</h3>
-            <p>Nom de l'entreprise : {{ entreprise.nom }}</p>
-            <p>Nom du contact : {{ entreprise.contact }}</p>
-            <p>Nom du responsable : {{ entreprise.responsable }}</p>
+            <p>Nom de l'entreprise : {{ entreprise.nom }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Nom du contact : {{ entreprise.contact }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Nom du responsable : {{ entreprise.responsable }} <input type="text" value="{{ etudiant.nom }}"></p>
         </div>
         <div>
             <h3>Contact</h3>
-            <p>Rue : {{ entreprise.rue }}</p>
-            <p>Code postal : {{ entreprise.code_postal }}</p>
-            <p>Ville : {{ entreprise.ville }}</p>
-            <p>Téléphone : {{ entreprise.telephone }}</p>
-            <p>Fax : {{ entreprise.fax }}</p>
-            <p>Email : {{ entreprise.email }}</p>
+            <p>Rue : {{ entreprise.rue }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Code postal : {{ entreprise.code_postal }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Ville : {{ entreprise.ville }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Téléphone : {{ entreprise.telephone }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Fax : {{ entreprise.fax }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Email : {{ entreprise.email }} <input type="text" value="{{ etudiant.nom }}"></p>
         </div>
         <div>
             <h3>Divers</h3>
-            <p>Observation : {{ entreprise.observation }}</p>
-            <p>URL : <a href="{{ entreprise.url }}">{{ entreprise.url }}</a></p>
-            <p>Niveau : {{ entreprise.niveau }}</p>
-            <p>Spécialité : {{ entreprise.specialite }}</p>
+            <p>Observation : {{ entreprise.observation }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>URL : <a href="{{ entreprise.url }}">{{ entreprise.url }}</a> <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Niveau : {{ entreprise.niveau }} <input type="text" value="{{ etudiant.nom }}"></p>
+        </div>
+        <div>   
+            <h3>Spécialité</h3>
+            <p>Spécialité : {{ entreprise.specialite }} <input type="text" value="{{ etudiant.nom }}"></p>
         </div>
     </div>
 </div>
