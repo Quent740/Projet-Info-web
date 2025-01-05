@@ -1,12 +1,17 @@
 <?php
 namespace P2114792\Projet\Controleur;
-use P2114792\Projet\Model\User;
+
+use P2114792\Projet\Model\Stagiere;
+use P2114792\Projet\Model\Prof;
 
 class Controle {
-    private $userModel;
+    private $Stagierel;
+    private $Prof1;
 
+    
     public function __construct($pdo) {
-        $this->userModel = new User($pdo);
+        $this->Stagierel = new Stagiere($pdo);
+        $this->Prof1 = new Prof($pdo);
     }
 
     public function accueil() {
@@ -41,7 +46,7 @@ class Controle {
     
     public function listUsers() {
         // Afficher la liste des utilisateurs
-        $users = $this->userModel->getAllUsers();
+        $users = $this->Stagierel->getAllUsers();
         echo $this->renderView('list.twig', ['users' => $users]);
     }
 
@@ -50,7 +55,7 @@ class Controle {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = $_POST['name'];
             $email = $_POST['email'];
-            $this->userModel->createUser($name, $email);
+            $this->Prof1->createEntreprise($name, $email);
             header("Location: /projet-info-web/public/index.php?action=listUsers");
         } else {
             echo $this->renderView('create.twig');
@@ -59,7 +64,7 @@ class Controle {
 
     public function editUser($id) {
         // Modifier un utilisateur
-        $user = $this->userModel->getUserById($id);
+        $user = $this->Prof1->getUserById($id);
         echo $this->renderView('edit.twig', ['user' => $user]);
     }
 
@@ -68,14 +73,14 @@ class Controle {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = $_POST['name'];
             $email = $_POST['email'];
-            $this->userModel->updateUser($id, $name, $email);
+            $this->Stagierel->updateUser($id, $name, $email);
             header("Location: /projet-info-web/public/index.php?action=listUsers");
         }
     }
 
     public function deleteUser($id) {
         // Supprimer un utilisateur
-        $this->userModel->deleteUser($id);
+        $this->Stagierel->deleteUser($id);
         header("Location: /projet-info-web/public/index.php?action=listUsers");
     }
 
