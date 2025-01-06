@@ -1,0 +1,99 @@
+{# entreprise.html.twig #}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des entreprises</title>
+    <link rel="stylesheet" href="CSS/général
+    .css">
+    <link rel="stylesheet" href="CSS/bouton.css">
+</head>
+<body>
+<nav>
+    <a href="index.php?action=Accueil" id="onglet_accueil" class="actif"><span>Accueil</span></a>
+    <a href="index.php?action=Entreprise" id="onglet_entreprise"><span>Entreprise</span></a>
+    <a href="index.php?action=Stagiaire" id="onglet_stagiaire"><span>Stagiaire</span></a>
+    <a href="index.php?action=Inscrire" id="onglet_inscrire"><span>Inscription</span></a>
+    <a href="index.php?action=Aide" id="onglet_aide"><span>Aide</span></a>
+    <a href="index.php?action=Deconnection" id="onglet_deconnection"><span>Déconnexion</span></a>
+
+    <!-- Boutons pour réduire/développer le menu -->
+    <div class="bottom">
+        <a href="#" id="icon_droite"><span></span></a>
+        <a href="#" id="icon_gauche"><span></span></a>
+    </div>
+</nav>
+
+<div id="corps" class="container">
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#" class="active">Entreprise</a></li>
+                <li><a href="#">Stagiaire</a></li>
+                <li><a href="#">Inscription</a></li>
+                <li><a href="#">Aide</a></li>
+                <li><a href="#">Déconnexion</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <header>
+            <div class="toolbar">
+                <button class="large_bouton_operation">
+                    <span class="icon_rechercher"></span>
+                    Rechercher une entreprise
+                </button>
+                <button class="large_bouton_operation">
+                    <span class="icon_ajouter"></span>
+                    Ajouter une entreprise
+                </button>
+            </div>
+        </header>
+
+        <section class="content">
+            <div class="search-bar">
+                <form method="GET" action="{{ path('entreprise_search') }}">
+                    <input type="text" name="q" placeholder="Rechercher une entreprise">
+                    <button type="submit" class="icon_rechercher">Rechercher</button>
+                </form>
+            </div>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Opération</th>
+                    <th>Entreprise</th>
+                    <th>Responsable</th>
+                    <th>Adresse</th>
+                    <th>Site</th>
+                    <th>Spécialité</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entreprise in entreprises %}
+                    <tr>
+                        <td class="bouton_operation">
+                            <a href="{{ path('entreprise_view', {'id': entreprise.id}) }}" class="icon_voir"></a>
+                            <a href="{{ path('entreprise_edit', {'id': entreprise.id}) }}" class="icon_modifier"></a>
+                            <a href="{{ path('entreprise_delete', {'id': entreprise.id}) }}" class="icon_supprimer" onclick="return confirm('Voulez-vous vraiment supprimer cette entreprise ?');"></a>
+                        </td>
+                        <td>{{ entreprise.nom }}</td>
+                        <td>{{ entreprise.responsable }}</td>
+                        <td>{{ entreprise.adresse }}</td>
+                        <td>
+                            <a href="{{ entreprise.site }}" target="_blank" class="icon_website">Site Web</a>
+                        </td>
+                        <td>{{ entreprise.specialite }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
+</body>
+</html>
