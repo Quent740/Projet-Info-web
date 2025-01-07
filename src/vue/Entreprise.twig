@@ -1,73 +1,59 @@
-<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entreprise-liste</title>
+    <title>Page Aide - Stage BTS</title>
     <link rel="stylesheet" href="CSS/general.css">
-
-    <link rel="stylesheet"  href=CSS/bouton.css">
-
 </head>
 <body>
 
+<!-- Menu de navigation -->
+<nav>
+    <a href="index.php?action=Accueil" id="onglet_accueil" ><span>Accueil</span></a>
+    <a href="index.php?action=Entreprise" id="onglet_entreprise" class="actif"><span>Entreprise</span></a>
+    <a href="index.php?action=Stagiaire" id="onglet_stagiaire"><span>Stagiaire</span></a>
+    <a href="index.php?action=Inscrire" id="onglet_inscrire"><span>Inscription</span></a>
+    <a href="index.php?action=Aide" id="onglet_aide" ><span>Aide</span></a>
+    <a href="index.php?action=Deconnection" id="onglet_deconnection"><span>Déconnexion</span></a>
 
-<div class="container">
-    <h1>Liste des entreprises</h1>
-
-    <!-- Bouton pour ajouter une nouvelle entreprise -->
-    <div class="large_bouton_operation">
-        <a href="index.php?action=Entrepriseajout" class="icon_ajouter">Ajouter une entreprise</a>
+    <!-- Boutons pour réduire/développer le menu -->
+    <div class="bottom">
+        <a href="#" id="icon_droite"><span></span></a>
+        <a href="#" id="icon_gauche"><span></span></a>
     </div>
+</nav>
 
-    <!-- Table pour afficher les entreprises -->
-    <table border="1" cellpadding="10" cellspacing="0" width="100%">
-        <thead>
-        <tr>
-            <th>Opération</th>
-            <th>Entreprise</th>
-            <th>Responsable</th>
-            <th>Adresse</th>
-            <th>Site</th>
-            <th>Spécialité</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% if entreprises|length > 0 %}
-            {% for entreprise in entreprises %}
-                <tr>
-                    <!-- Boutons pour modifier et supprimer -->
-                    <td style="text-align: center;" class="bouton_operation">
-                        <a href="index.php?action=editEntreprise&id={{ entreprise.id }}" class="icon_modifier" title="Modifier"></a>
-                        <a href="index.php?action=deleteEntreprise&id={{ entreprise.id }}"
-                           class="icon_supprimer"
-                           title="Supprimer"
-                           onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette entreprise ?');"></a>
-                    </td>
+<div id="corps">
 
-                    <!-- Détails de l'entreprise -->
-                    <td>{{ entreprise.nom }}</td>
-                    <td>{{ entreprise.responsable }}</td>
-                    <td>{{ entreprise.adresse }}</td>
-
-                    <!-- Lien vers le site web -->
-                    <td style="text-align: center;">
-                        {% if entreprise.site %}
-                            <a href="{{ entreprise.site }}" class="icon_website" target="_blank" title="Voir le site"></a>
-                        {% else %}
-                            -
-                        {% endif %}
-                    </td>
-
-                    <td>{{ entreprise.specialite }}</td>
-                </tr>
-            {% endfor %}
-        {% else %}
-            <!-- Message si aucune entreprise n'est disponible -->
-            <tr>
-                <td colspan="6" style="text-align: center;">Aucune entreprise trouvée.</td>
-            </tr>
-        {% endif %}
-        </tbody>
-    </table>
+    <div class="container">
+        <h2>{{ entreprise.nom }}</h2>
+        <div>
+            <h3>Entrée</h3>
+            <p>Nom de l'entreprise : {{ entreprise.nom }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Nom du contact : {{ entreprise.contact }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Nom du responsable : {{ entreprise.responsable }} <input type="text" value="{{ etudiant.nom }}"></p>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <p>Rue : {{ entreprise.rue }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Code postal : {{ entreprise.code_postal }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Ville : {{ entreprise.ville }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Téléphone : {{ entreprise.telephone }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Fax : {{ entreprise.fax }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Email : {{ entreprise.email }} <input type="text" value="{{ etudiant.nom }}"></p>
+        </div>
+        <div>
+            <h3>Divers</h3>
+            <p>Observation : {{ entreprise.observation }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>URL : <a href="{{ entreprise.url }}">{{ entreprise.url }}</a> <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Niveau : {{ entreprise.niveau }} <input type="text" value="{{ etudiant.nom }}"></p>
+        </div>
+        <div>   
+            <h3>Spécialité</h3>
+            <p>Spécialité : {{ entreprise.specialite }} <input type="text" value="{{ etudiant.nom }}"></p>
+        </div>
+    </div>
 </div>
+
+</body>
+</html>

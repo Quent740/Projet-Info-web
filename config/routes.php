@@ -1,46 +1,112 @@
 <?php
 
 // Récupérer les paramètres de l'URL
+$Role = $_POST['role'] ?? $_GET['role'] ?? null;
 $action = $_GET['action'] ?? null; // Action de la route
 $id = $_GET['id'] ?? null;         // ID dans les routes (ex: pour 'edit', 'delete')
 $pdo = null;                        
 
 // Initialisation du contrôleur
 $controleur = 'Controle';
-$method = 'accueil';
+$method = 'Connection';
 
 switch ($action) {
-    case 'accueil':
+    case 'Accueil':
         $controller = 'Controle';
         $method = 'accueil';
         break;
-    case 'edit':
+    case 'Accueilconnexion':
         $controller = 'Controle';
-        $method = 'editUser';
+        $method = 'Connection';
         break;
-    case 'update':
-        $controller = 'Controle';
-        $method = 'updateUser';
+    //insrire Stagiaire
+    case 'InscrireStagiaire':
+        //if ($Role == 'Professeur') {
+            $controller = 'Controle';
+            $method = 'createStagiere';
+        //} else {
+        //    $controller = 'Controle';
+        //    $method = 'Connection';
+        //}
         break;
-    case 'delete':
-        $controller = 'Controle';
-        $method = 'deleteUser';
+    //peut etre pas besoin
+    case 'editStagiaire':
+        if ($Role == 'Professeur') {
+            $controller = 'Controle';
+            $method = 'editStagiere';
+        } else {
+            $controller = 'Controle';
+            $method = 'Connection';
+        }
         break;
+    //update stagiere
+    case 'updateStagiaire':
+        if ($Role == 'Professeur') {
+            $controller = 'Controle';
+            $method = 'updateStagiere';
+        } else {
+            $controller = 'Controle';
+            $method = 'Connection';
+        }
+        break;
+    //delet stagiere
+    case 'deleteStagiaire':
+        if ($Role == 'Professeur') {
+            $controller = 'Controle';
+            $method = 'deleteStagiere';
+        } else {
+            $controller = 'Controle';
+            $method = 'Connection';
+        }
+        break;
+    //afichage stagiere
     case 'Stagiaire':
-        $controller = 'Controle';
-        $method = 'Stagiaire';
+        if ($Role == 'Professeur') {
+            $controller = 'Controle';
+            $method = 'listStagiere';
+        } else {
+            $controller = 'Controle';
+            $method = 'Connection';
+        }
         break;
+    //peut etre pas besoin
+    case 'editEntreprise':
+        if ($Role == 'Professeur') {
+            $controller = 'Controle';
+            $method = 'editEntreprise';
+        } else {
+            $controller = 'Controle';
+            $method = 'Connection';
+        }
+        break;
+    //update Entreprise
+    case 'updateEntreprise':
+        if ($Role == 'Professeur') {
+            $controller = 'Controle';
+            $method = 'updateEntreprise';
+        } else {
+            $controller = 'Controle';
+            $method = 'Connection';
+        }
+        break;
+    //delet Entreprise
+    case 'deleteEntreprise':
+        if ($Role == 'Professeur') {
+            $controller = 'Controle';
+            $method = 'deleteEntreprise';
+        } else {
+            $controller = 'Controle';
+            $method = 'Connection';
+        }
+        break;
+    //afichage entreprise
     case 'Entreprise':
         $controller = 'Controle';
-        $method = 'Entreprise';
+        $method = 'listEntreprise';
         break;
     case 'Deconnection':
         $controller = 'Controle';
         $method = 'Deconnection';
-        break;
-    case 'Inscrire':
-        $controller = 'Controle';
-        $method = 'Inscrire';
         break;
     case 'Aide':
         $controller = 'Controle';
@@ -48,7 +114,7 @@ switch ($action) {
         break;
     default:
         $controller = 'Controle';
-        $method = 'accueil'; //listUsers
+        $method = 'Connection'; 
         break;
 }
 
@@ -59,7 +125,7 @@ if ($controller && $method) {
     $controllerObject = new $controllerClass($pdo);
 
     // Appeler la méthode du contrôleur avec l'ID si besoin
-    if ($action == 'edit' || $action == 'update' || $action == 'delete' ||$action == 'Stagiaire' || $action == 'Entreprise' || $action == 'Deconnection' || $action == 'Inscrire' || $action == 'Aide') {
+    if ($action == 'Accueil' || $action == 'Accueilconnexion' || $action == 'Entreprise' ||$action == 'Stagiaire' || $action == 'Deconnection' || $action == 'Aide' || $action == 'InscrireStagiaire' || $action == 'updateStagiaire' || $action == 'deleteStagiaire' || $action == 'editStagiaire' || $action == 'updateEntreprise' || $action == 'deleteEntreprise' || $action == 'editEntreprise') {
         $controllerObject->$method($id);
     } else {
         $controllerObject->$method();

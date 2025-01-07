@@ -13,7 +13,7 @@
     <a href="index.php?action=Accueil" id="onglet_accueil"><span>Accueil</span></a>
     <a href="index.php?action=Entreprise" id="onglet_entreprise"><span>Entreprise</span></a>
     <a href="index.php?action=Stagiaire" id="onglet_stagiaire" class="actif"><span>Stagiaire</span></a>
-    <a href="index.php?action=Inscrire" id="onglet_inscrire"><span>Inscription</span></a>
+    <a href="index.php?action=InscrireStagiaire" id="onglet_inscrire"><span>Inscription</span></a>
     <a href="index.php?action=Aide" id="onglet_aide"><span>Aide</span></a>
     <a href="index.php?action=Deconnection" id="onglet_deconnection"><span>Déconnexion</span></a>
 
@@ -40,11 +40,11 @@
                 <p class="error">{{ error_message }}</p>
             {% endif %}
 
-            <label for="nom">Nom* :</label>
-            <input type="text" name="nom" id="nom" required>
+            <label for="nom_etudiant">Nom* :</label>
+            <input type="text" name="nom_etudiant" id="nom_etudiant" required>
 
-            <label for="prenom">Prénom* :</label>
-            <input type="text" name="prenom" id="prenom" required>
+            <label for="prenom_etudiant">Prénom* :</label>
+            <input type="text" name="prenom_etudiant" id="prenom_etudiant" required>
 
             <label for="login">Login (8 caractères)* :</label>
             <input type="text" name="login" id="login" maxlength="8" required>

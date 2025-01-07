@@ -24,23 +24,8 @@ class Controle {
         echo $this->renderView('accueil.twig');
     }
 
-    public function Entreprise() {
-        // Afficher la page d'accueil
-        echo $this->renderView('Entreprise.twig');
-    }
-
-    public function Stagiaire() {
-        // Afficher la page d'accueil
-        echo $this->renderView('Stagiaire.twig');
-    }
-
-    public function Inscrire() {
-        // Afficher la page d'accueil
-        echo $this->renderView('Inscrire.twig');
-    }
-
     public function Aide() {
-        // Afficher la page d'accueil
+        // Afficher la page d'accueil  
         echo $this->renderView('Aide.twig');
     }
 
@@ -48,12 +33,22 @@ class Controle {
         // Afficher la page d'accueil
         echo $this->renderView('Deconnection.twig');
     }
-    
-    //modifier pour etudiant aussi
+
+    public function Connection() {
+        // Afficher la page d'accueil
+        echo $this->renderView('accueilconnexion.twig');
+    }
+
+    public function listStagiere() {
+        // Afficher la liste des utilisateurs
+        $users = $this->Prof1->getAllStagiere();
+        echo $this->renderView('Stagiaire.twig', ['num_etudiant' => $users]);
+    }
+
     public function listEntreprise() {
         // Afficher la liste des utilisateurs
         $users = $this->Prof1->getAllEntreprise();
-        echo $this->renderView('list.twig', ['users' => $users]);
+        echo $this->renderView('Entreprise.twig', ['num_entreprise' => $users]);
     }
 
     public function editEntreprise($NumEntreprise) {
@@ -88,7 +83,7 @@ class Controle {
             $this->Prof1->createEntreprise($raisonSocial, $email, $NomContact, $NomResp, $Rue, $Ville, $CodePostal, $Tel, $Fax, $Observation, $SiteWeb, $Niveau, $EnActivite);
             header("Location: /projet-info-web/public/index.php?action=EntrepriseEdit");
         } else {
-            echo $this->renderView('create.twig');
+            echo $this->renderView('EntrepriseEdit.twig');
         }
     }
 
@@ -117,7 +112,7 @@ class Controle {
     public function deleteEntreprise($NumEntreprise) {
         // Supprimer une entreprise
         $this->Prof1->deleteEntreprise($NumEntreprise);
-        header("Location: /projet-info-web/public/index.php?action=listEntreprise");
+        header("Location: /projet-info-web/public/index.php?action=Entreprise");
     }
 
     public function createStagiere() {
@@ -134,7 +129,7 @@ class Controle {
             $this->Prof1->createStagiere($NomEtudiant, $PrenomEtudiant, $AnneeObtention, $Login, $Mdp, $NumClasse, $EnActivite);
             header("Location: /projet-info-web/public/index.php?action=StagiaireEdit");
         } else {
-            echo $this->renderView('create.twig');
+            echo $this->renderView('StagiaireEdit.twig');
         }
     }
 
@@ -157,7 +152,7 @@ class Controle {
     public function deleteStagiere($NumEtudiant) {
         // Supprimer un utilisateur
         $this->Prof1->deleteStagiere($NumEtudiant);
-        header("Location: /projet-info-web/public/index.php?action=listEtudiant");
+        header("Location: /projet-info-web/public/index.php?action=Stagiaire");
     }
 
 }
