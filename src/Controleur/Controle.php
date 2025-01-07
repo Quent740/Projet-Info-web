@@ -99,13 +99,13 @@ class Controle {
     public function Entreprise($NumEntreprise) {
         // Modifier une entreprise
         $user = $this->Prof1->getEntreprise($NumEntreprise);
-        echo $this->renderView('EntrepriseEdit.twig', ['entreprise' => $user]);
+        echo $this->renderView('EntrepriseVue.twig', ['entreprise' => $user]);
     }
 
     public function Stagiere($NumEtudiant) {
         // Modifier un utilisateur
         $user = $this->Prof1->getStagiere($NumEtudiant);
-        echo $this->renderView('StagiaireEdit.twig', ['etudiant' => $user]);
+        echo $this->renderView('StagiaireVue.twig', ['etudiant' => $user]);
     }
 
     public function editEntreprise($NumEntreprise) {

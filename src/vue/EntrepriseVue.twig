@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modification Entreprise</title>
+    <link rel="stylesheet" href="CSS/general.css">
+    <link rel="stylesheet" href="CSS/formulaire.css">
+</head>
+<body>
+
+<!-- Menu de navigation -->
+<nav>
+    <a href="index.php?action=Accueil" id="onglet_accueil"><span>Accueil</span></a>
+    <a href="index.php?action=Entreprise" id="onglet_entreprise" class="actif"><span>Entreprise</span></a>
+    <a href="index.php?action=Stagiaire" id="onglet_stagiaire"><span>Stagiaire</span></a>
+    <a href="index.php?action=inscrireStage" id="onglet_inscrire"><span>Inscription</span></a>
+    <a href="index.php?action=Aide" id="onglet_aide"><span>Aide</span></a>
+    <a href="index.php?action=Deconnection" id="onglet_deconnection"><span>Déconnexion</span></a>
+
+    <!-- Boutons pour réduire/développer le menu -->
+    <div class="bottom">
+        <a href="#" id="icon_droite"><span></span></a>
+        <a href="#" id="icon_gauche"><span></span></a>
+    </div>
+</nav>
+
+<div id="corps">
+
+    <!-- Formulaire pour mettre à jour les données -->
+    <form action="index.php?action=updateEntreprise&id={{ entreprise.num_entreprise }}" method="POST">
+        <div class="container">
+            <h2>Modification de l'entreprise : {{ entreprise.raison_sociale }}</h2>
+
+            <div>
+                <h3>Entrée</h3>
+                <p>Nom de l'entreprise : <input type="text" name="raison_sociale" value="{{ entreprise.raison_sociale }}" required></p>
+                <p>Nom du contact : <input type="text" name="nom_contact" value="{{ entreprise.nom_contact }}"></p>
+                <p>Nom du responsable : <input type="text" name="nom_resp" value="{{ entreprise.nom_resp }}"></p>
+            </div>
+
+            <div>
+                <h3>Contact</h3>
+                <p>Rue : <input type="text" name="rue_entreprise" value="{{ entreprise.rue_entreprise }}"></p>
+                <p>Code postal : <input type="text" name="cp_entreprise" value="{{ entreprise.cp_entreprise }}"></p>
+                <p>Ville : <input type="text" name="ville_entreprise" value="{{ entreprise.ville_entreprise }}"></p>
+                <p>Téléphone : <input type="text" name="tel_entreprise" value="{{ entreprise.tel_entreprise }}"></p>
+                <p>Fax : <input type="text" name="fax_entreprise" value="{{ entreprise.fax_entreprise }}"></p>
+                <p>Email : <input type="email" name="email" value="{{ entreprise.email }}"></p>
+            </div>
+
+            <div>
+                <h3>Divers</h3>
+                <p>Observation : <input type="text" name="observation" value="{{ entreprise.observation }}"></p>
+                <p>URL : <input type="text" name="site_entreprise" value="{{ entreprise.site_entreprise }}"></p>
+                <p>Niveau : <input type="text" name="niveau" value="{{ entreprise.niveau }}"></p>
+                <p>En activité :
+                    <select name="en_activite">
+                        <option value="1" {% if entreprise.en_activite == 1 %}selected{% endif %}>Oui</option>
+                        <option value="0" {% if entreprise.en_activite == 0 %}selected{% endif %}>Non</option>
+                    </select>
+                </p>
+            </div>
+
+            
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
