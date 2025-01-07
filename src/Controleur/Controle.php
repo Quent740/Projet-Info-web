@@ -4,6 +4,8 @@ namespace P2114792\Projet\Controleur;
 use P2114792\Projet\Model\Stagiere;
 use P2114792\Projet\Model\Prof;
 
+require_once '../config/database.php';
+
 class Controle {
     private $Stagierel;
     private $Prof1;
@@ -17,6 +19,7 @@ class Controle {
     public function __construct($pdo) {
         $this->Stagierel = new Stagiere($pdo);
         $this->Prof1 = new Prof($pdo);
+        $this->pdo = $pdo;
     }
 
     public function accueil() {
@@ -35,9 +38,45 @@ class Controle {
     }
 
     public function Connection() {
-        // Afficher la page d'accueil
-        echo $this->renderView('accueilconnexion.twig');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $login = $_POST['login'];
+            $mdp = $_POST['mdp'];
+            $role = $_POST['role'];
+    
+            try {
+                
+                // Vérification en fonction du rôle
+                if ($role === 'Eleve') {
+                    $stmt = $this->pdo->prepare("SELECT * FROM etudiant WHERE login = ? AND mdp = ?");
+                } elseif ($role === 'Professeur') {
+                    $stmt = $this->pdo->prepare("SELECT * FROM professeur WHERE login = ? AND mdp = ?");
+                } else {
+                    throw new Exception("Rôle invalide !");
+                }
+    
+                $stmt->execute([$login, $mdp]);
+                $user = $stmt->fetch(\PDO::FETCH_ASSOC);
+    
+                if ($user) {
+                    // Si les identifiants sont corrects, redirection vers l'accueil
+                    header('Location: index.php?action=Accueil');
+                    exit;
+                } else {
+                    // Si les identifiants sont incorrects
+                    $error_message = "Identifiant ou mot de passe incorrect.";
+                    echo $this->renderView('accueilconnexion.twig', ['error_message' => $error_message]);
+                }
+            } catch (Exception $e) {
+                // En cas d'erreur
+                $error_message = "Erreur : " . $e->getMessage();
+                echo $this->renderView('accueilconnexion.twig', ['error_message' => $error_message]);
+            }
+        } else {
+            // Afficher simplement la page de connexion
+            echo $this->renderView('accueilconnexion.twig');
+        }
     }
+    
 
     public function listStagiere() {
         // Afficher la liste des utilisateurs

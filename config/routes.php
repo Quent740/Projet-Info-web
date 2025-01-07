@@ -1,5 +1,4 @@
 <?php
-
 // Récupérer les paramètres de l'URL
 $Role = $_POST['role'] ?? $_GET['role'] ?? null;
 $action = $_GET['action'] ?? null; // Action de la route
