@@ -31,7 +31,7 @@ class Prof extends Stagiere {
     }
 
     public function createStagiere($NomEtudiant, $PrenomEtudiant, $AnneeObtention, $Login, $Mdp, $NumClasse, $EnActivite) {
-        $stmt = $this->pdo->prepare("INSERT INTO etudiant ( nom_etudiant, prenom_etudiant, login, mdp, num_classe, en_activite) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $this->pdo->prepare("INSERT INTO etudiant ( nom_etudiant, prenom_etudiant, annee_obtention, login, mdp, num_classe, en_activite) VALUES (?, ?, ?, ?, ?, ?, ?)");
         return $stmt->execute([$NomEtudiant, $PrenomEtudiant, $AnneeObtention, $Login, $Mdp, $NumClasse, $EnActivite]);
     }
 

@@ -25,7 +25,7 @@ class Controle {
     }
 
     public function Aide() {
-        // Afficher la page d'accueil
+        // Afficher la page d'accueil  
         echo $this->renderView('Aide.twig');
     }
 
@@ -112,7 +112,7 @@ class Controle {
     public function deleteEntreprise($NumEntreprise) {
         // Supprimer une entreprise
         $this->Prof1->deleteEntreprise($NumEntreprise);
-        header("Location: /projet-info-web/public/index.php?action=listEntreprise");
+        header("Location: /projet-info-web/public/index.php?action=Entreprise");
     }
 
     public function createStagiere() {
@@ -152,7 +152,7 @@ class Controle {
     public function deleteStagiere($NumEtudiant) {
         // Supprimer un utilisateur
         $this->Prof1->deleteStagiere($NumEtudiant);
-        header("Location: /projet-info-web/public/index.php?action=listEtudiant");
+        header("Location: /projet-info-web/public/index.php?action=Stagiaire");
     }
 
 }
