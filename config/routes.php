@@ -20,13 +20,13 @@ switch ($action) {
         break;
     //insrire Stagiaire
     case 'InscrireStagiaire':
-        //if ($Role == 'Professeur') {
+        if ($Role == 'Professeur') {
             $controller = 'Controle';
             $method = 'createStagiere';
-        //} else {
-        //    $controller = 'Controle';
-        //    $method = 'Connection';
-        //}
+        } else {
+            $controller = 'Controle';
+            $method = 'Connection';
+        }
         break;
     //peut etre pas besoin
     case 'editStagiaire':
