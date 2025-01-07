@@ -38,7 +38,6 @@ class Controle {
     }
 
     public function Connection() {
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $login = $_POST['login'];
             $mdp = $_POST['mdp'];

@@ -31,33 +31,19 @@ switch ($action) {
         break;
     //peut etre pas besoin
     case 'editStagiaire':
-        if ($Role == 'Professeur') {
-            $controller = 'Controle';
-            $method = 'editStagiere';
-        } else {
-            $controller = 'Controle';
-            $method = 'Connection';
-        }
+        $controller = 'Controle';
+        $method = 'editStagiere';
         break;
     //update stagiere
     case 'updateStagiaire':
-        if ($Role == 'Professeur') {
-            $controller = 'Controle';
-            $method = 'updateStagiere';
-        } else {
-            $controller = 'Controle';
-            $method = 'Connection';
-        }
+        $controller = 'Controle';
+        $method = 'updateStagiere';
+
         break;
     //delet stagiere
     case 'deleteStagiaire':
-        if ($Role == 'Professeur') {
-            $controller = 'Controle';
-            $method = 'deleteStagiere';
-        } else {
-            $controller = 'Controle';
-            $method = 'Connection';
-        }
+        $controller = 'Controle';
+        $method = 'deleteStagiere';
         break;
     //afichage stagiere
     case 'Stagiaire':
