@@ -48,6 +48,11 @@ class Controle {
         // Afficher la page d'accueil
         echo $this->renderView('Deconnection.twig');
     }
+
+    public function Connection() {
+        // Afficher la page d'accueil
+        echo $this->renderView('accueilconnexion.twig');
+    }
     
     //modifier pour etudiant aussi
     public function listEntreprise() {

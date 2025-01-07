@@ -7,10 +7,10 @@ $pdo = null;
 
 // Initialisation du contrôleur
 $controleur = 'Controle';
-$method = 'accueil';
+$method = 'Connection';
 
 switch ($action) {
-    case 'accueil':
+    case 'Accueil':
         $controller = 'Controle';
         $method = 'accueil';
         break;
@@ -46,9 +46,13 @@ switch ($action) {
         $controller = 'Controle';
         $method = 'Aide';
         break;
+    case 'Accueilconnexion':
+        $controller = 'Controle';
+        $method = 'Connection';
+        break;
     default:
         $controller = 'Controle';
-        $method = 'accueil'; //listUsers
+        $method = 'Connection'; //listUsers
         break;
 }
 
