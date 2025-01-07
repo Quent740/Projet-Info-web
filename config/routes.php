@@ -55,6 +55,16 @@ switch ($action) {
             $method = 'Connection';
         }
         break;
+    //insrire Stagiaire
+    case 'createEntreprise':
+        if ($Role == 'Professeur') {
+            $controller = 'Controle';
+            $method = 'createEntreprise';
+        } else {
+            $controller = 'Controle';
+            $method = 'Connection';
+        }
+        break;
     //peut etre pas besoin
     case 'editEntreprise':
         if ($Role == 'Professeur') {

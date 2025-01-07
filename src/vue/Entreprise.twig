@@ -39,51 +39,48 @@
         <!-- Tableau des entreprises -->
         <table border="1" cellpadding="10" cellspacing="0" width="100%">
             <thead>
-            <tr>
-                <th>Opération</th>
-                <th>Entreprise</th>
-                <th>Responsable</th>
-                <th>Adresse</th>
-                <th>Site</th>
-                <th>Spécialité</th>
-            </tr>
+                <tr>
+                    <th>Opération</th>
+                    <th>Entreprise</th>
+                    <th>Responsable</th>
+                    <th>Adresse</th>
+                    <th>Site</th>
+                    <th>Spécialité</th>
+                </tr>
             </thead>
             <tbody>
-            {% if entreprises|length > 0 %}
-                {% for entreprise in entreprises %}
+                {% if entreprises|length > 0 %}
+                    {% for entreprise in entreprises %}
+                        <tr>
+                            <!-- Boutons pour modifier et supprimer -->
+                            <td style="text-align: center;" class="bouton_operation">
+                                <a href="index.php?action=editEntreprise&id={{ entreprise.num_entreprise }}" class="icon_modifier" title="Modifier"></a>
+                                <a href="index.php?action=deleteEntreprise&id={{ entreprise.num_entreprise }}" class="icon_supprimer" title="Supprimer" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette entreprise ?');"></a>
+                            </td>
+                            <!-- Informations sur l'entreprise -->
+                            <td>{{ entreprise.raison_sociale }}</td>
+                            <td>{{ entreprise.nom_resp }}</td>
+                            <td>{{ entreprise.rue_entreprise }} {{ entreprise.ville_entreprise }}</td>
+                            <td style="text-align: center;">
+                                {% if entreprise.site_entreprise %}
+                                    <a href="{{ entreprise.site_entreprise }}" class="icon_website" target="_blank" title="Voir le site">Voir le site</a>
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            <td>{{ entreprise.niveau }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
                     <tr>
-                        <!-- Boutons pour modifier et supprimer -->
-                        <td style="text-align: center;" class="bouton_operation">
-                            <a href="index.php?action=editEntreprise&id={{ entreprise.id }}" class="icon_modifier" title="Modifier"></a>
-                            <a href="index.php?action=deleteEntreprise&id={{ entreprise.id }}"
-                               class="icon_supprimer"
-                               title="Supprimer"
-                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette entreprise ?');"></a>
-                        </td>
-                        <!-- Informations sur l'entreprise -->
-                        <td>{{ entreprise.nom }}</td>
-                        <td>{{ entreprise.responsable }}</td>
-                        <td>{{ entreprise.adresse }}</td>
-                        <!-- Lien vers le site web -->
-                        <td style="text-align: center;">
-                            {% if entreprise.site %}
-                                <a href="{{ entreprise.site }}" class="icon_website" target="_blank" title="Voir le site"></a>
-                            {% else %}
-                                -
-                            {% endif %}
-                        </td>
-                        <td>{{ entreprise.specialite }}</td>
+                        <td colspan="6" style="text-align: center;">Aucune entreprise trouvée.</td>
                     </tr>
-                {% endfor %}
-            {% else %}
-                <tr>
-                    <td colspan="6" style="text-align: center;">Aucune entreprise trouvée.</td>
-                </tr>
-            {% endif %}
+                {% endif %}
             </tbody>
         </table>
     </div>
 </div>
+
 
 </body>
 </html>

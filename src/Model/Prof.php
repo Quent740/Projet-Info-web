@@ -25,10 +25,31 @@ class Prof extends Stagiere {
         return $stmt->execute([$NumEntreprise, $email, $NomContact, $NomResp, $Rue, $Ville, $CodePostal, $Tel, $Fax, $Observation, $SiteWeb, $Niveau, $EnActivite, $raisonSocial]);
     }
 
-    public function deleteEntreprise($NumEntreprise) {
-        $stmt = $this->pdo->prepare("DELETE FROM entreprise WHERE num_entreprise = ?");
-        return $stmt->execute([$NumEntreprise]);
+    public function deleteEntreprise($numEntreprise) {
+        
+            $this->pdo->beginTransaction(); // Début de la transaction
+    
+            // Supprimer les missions associées
+            $stages = $this->pdo->prepare("SELECT num_stage FROM stage WHERE num_entreprise = ?");
+            $stages->execute([$numEntreprise]);
+            $stages = $stages->fetchAll(\PDO::FETCH_ASSOC);
+    
+            foreach ($stages as $stage) {
+                $this->pdo->prepare("DELETE FROM mission WHERE num_stage = ?")->execute([$stage['num_stage']]);
+            }
+    
+            // Supprimer les stages associés
+            $this->pdo->prepare("DELETE FROM stage WHERE num_entreprise = ?")->execute([$numEntreprise]);
+    
+            // Supprimer les relations dans spec_entreprise
+            $this->pdo->prepare("DELETE FROM spec_entreprise WHERE num_entreprise = ?")->execute([$numEntreprise]);
+    
+            // Supprimer l'entreprise elle-même
+            $this->pdo->prepare("DELETE FROM entreprise WHERE num_entreprise = ?")->execute([$numEntreprise]);
+    
+            $this->pdo->commit(); // Valider la transaction
     }
+    
 
     public function createStagiere($NomEtudiant, $PrenomEtudiant, $AnneeObtention, $Login, $Mdp, $NumClasse, $EnActivite) {
         $stmt = $this->pdo->prepare("INSERT INTO etudiant ( nom_etudiant, prenom_etudiant, annee_obtention, login, mdp, num_classe, en_activite) VALUES (?, ?, ?, ?, ?, ?, ?)");

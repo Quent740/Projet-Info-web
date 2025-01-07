@@ -83,13 +83,13 @@ class Controle {
     public function listStagiere() {
         // Afficher la liste des utilisateurs
         $users = $this->Prof1->getAllStagiere();
-        echo $this->renderView('Stagiaire.twig', ['num_etudiant' => $users]);
+        echo $this->renderView('Stagiaire.twig');
     }
 
     public function listEntreprise() {
         // Afficher la liste des utilisateurs
         $users = $this->Prof1->getAllEntreprise();
-        echo $this->renderView('Entreprise.twig', ['num_entreprise' => $users]);
+        echo $this->renderView('Entreprise.twig',['entreprises' => $users]);
     }
 
     public function editEntreprise($NumEntreprise) {
@@ -122,9 +122,9 @@ class Controle {
             $EnActivite = $_POST['en_activite'];
 
             $this->Prof1->createEntreprise($raisonSocial, $email, $NomContact, $NomResp, $Rue, $Ville, $CodePostal, $Tel, $Fax, $Observation, $SiteWeb, $Niveau, $EnActivite);
-            header("Location: /projet-info-web/public/index.php?action=EntrepriseEdit");
+            header("Location: /projet-info-web/public/index.php?action=createEntreprise");
         } else {
-            echo $this->renderView('EntrepriseEdit.twig');
+            echo $this->renderView('Entrepriseajout.twig');
         }
     }
 
@@ -146,11 +146,13 @@ class Controle {
             $EnActivite = $_POST['en_activite'];
 
             $this->Prof1->updateEntreprise($NumEntreprise, $raisonSocial, $email, $NomContact, $NomResp, $Rue, $Ville, $CodePostal, $Tel, $Fax, $Observation, $SiteWeb, $Niveau, $EnActivite);
-            header("Location: /projet-info-web/public/index.php?action=EntrepriseEdit");
+            
+            header("Location: /projet-info-web/public/index.php?action=updateEntreprise");
         }
     }
 
     public function deleteEntreprise($NumEntreprise) {
+        
         // Supprimer une entreprise
         $this->Prof1->deleteEntreprise($NumEntreprise);
         header("Location: /projet-info-web/public/index.php?action=Entreprise");
