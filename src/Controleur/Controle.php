@@ -89,17 +89,23 @@ class Controle {
         $users = $this->Prof1->getAllStagiere();
         echo $this->renderView('Stagiaire.twig',['etudiants' => $users]);
     }
-    
+
+    public function listEntreprise() {
+        // Afficher la liste des utilisateurs
+        $users = $this->Prof1->getAllEntreprise();
+        echo $this->renderView('Entreprise.twig',['entreprises' => $users]);
+    }
+
     public function Entreprise($NumEntreprise) {
         // Modifier une entreprise
         $user = $this->Prof1->getEntreprise($NumEntreprise);
         echo $this->renderView('EntrepriseEdit.twig', ['entreprise' => $user]);
     }
 
-    public function listEntreprise() {
-        // Afficher la liste des utilisateurs
-        $users = $this->Prof1->getAllEntreprise();
-        echo $this->renderView('Entreprise.twig',['entreprises' => $users]);
+    public function Stagiere($NumEtudiant) {
+        // Modifier un utilisateur
+        $user = $this->Prof1->getStagiere($NumEtudiant);
+        echo $this->renderView('StagiaireEdit.twig', ['etudiant' => $user]);
     }
 
     public function editEntreprise($NumEntreprise) {
@@ -132,7 +138,7 @@ class Controle {
             $EnActivite = $_POST['en_activite'];
 
             $this->Prof1->createEntreprise($raisonSocial, $email, $NomContact, $NomResp, $Rue, $Ville, $CodePostal, $Tel, $Fax, $Observation, $SiteWeb, $Niveau, $EnActivite);
-            header("Location: /projet-info-web/public/index.php?action=createEntreprise");
+            header("Location: /projet-info-web/public/index.php?action=Entreprise");
         } else {
             echo $this->renderView('Entrepriseajout.twig');
         }
@@ -157,7 +163,7 @@ class Controle {
 
             $this->Prof1->updateEntreprise($NumEntreprise, $raisonSocial, $email, $NomContact, $NomResp, $Rue, $Ville, $CodePostal, $Tel, $Fax, $Observation, $SiteWeb, $Niveau, $EnActivite);
             
-            header("Location: /projet-info-web/public/index.php?action=updateEntreprise");
+            header("Location: /projet-info-web/public/index.php?action=Entreprise");
         }
     }
 
@@ -180,7 +186,7 @@ class Controle {
             $EnActivite = $_POST['en_activite'];
 
             $this->Prof1->createStagiere($NomEtudiant, $PrenomEtudiant, $AnneeObtention, $Login, $Mdp, $NumClasse, $EnActivite);
-            header("Location: /projet-info-web/public/index.php?action=StagiaireEdit");
+            header("Location: /projet-info-web/public/index.php?action=Sagiaire");
         } else {
             echo $this->renderView('StagiaireEdit.twig');
         }
@@ -198,7 +204,7 @@ class Controle {
             $EnActivite = $_POST['en_activite'];
 
             $this->Prof1->updateStagiere($NumEtudiant, $NomEtudiant, $PrenomEtudiant, $AnneeObtention, $Login, $Mdp, $NumClasse, $EnActivite);
-            header("Location: /projet-info-web/public/index.php?action=StagiaireEdit");
+            header("Location: /projet-info-web/public/index.php?action=Sagiaire");
         }
     }
 

@@ -59,6 +59,15 @@ switch ($action) {
             $method = 'Connection';
         }
         break;
+    case '1Stagiaire':
+        if ($Role == 'Professeur') {
+            $controller = 'Controle';
+            $method = 'Stagiere';
+        } else {
+            $controller = 'Controle';
+            $method = 'Connection';
+        }
+        break;
     //insrire Stagiaire
     case 'createEntreprise':
         if ($Role == 'Professeur') {
@@ -69,7 +78,7 @@ switch ($action) {
             $method = 'Connection';
         }
         break;
-    //peut etre pas besoin
+    //edit entreprise
     case 'editEntreprise':
         if ($Role == 'Professeur') {
             $controller = 'Controle';
@@ -129,7 +138,7 @@ if ($controller && $method) {
     $controllerObject = new $controllerClass($pdo);
 
     // Appeler la méthode du contrôleur avec l'ID si besoin
-    if ($action == 'Accueil' || $action == 'Accueilconnexion' || $action == 'Entreprise' ||$action == 'Stagiaire' || $action == 'Deconnection' || $action == 'Aide' || $action == 'InscrireStagiaire' || $action == 'updateStagiaire' || $action == 'deleteStagiaire' || $action == 'editStagiaire' || $action == 'updateEntreprise' || $action == 'deleteEntreprise' || $action == 'editEntreprise') {
+    if ($action == 'Accueil' || $action == 'Accueilconnexion' || $action == 'Entreprise' ||$action == 'Stagiaire' || $action == 'Deconnection' || $action == 'Aide' || $action == 'InscrireStagiaire' || $action == 'updateStagiaire' || $action == 'deleteStagiaire' || $action == 'editStagiaire' || $action == 'updateEntreprise' || $action == 'deleteEntreprise' || $action == 'editEntreprise' || $action == '1Stagiaire' || $action == '1Entreprise') {
         $controllerObject->$method($id);
     } else {
         $controllerObject->$method();
