@@ -78,12 +78,17 @@ class Controle {
             echo $this->renderView('accueilconnexion.twig');
         }
     }
+
+    public function inscrireStage() {
+        // Afficher la page d'accueil
+        echo $this->renderView('inscrireStage.twig');
+    }
     
 
     public function listStagiere() {
         // Afficher la liste des utilisateurs
         $users = $this->Prof1->getAllStagiere();
-        echo $this->renderView('Stagiaire.twig');
+        echo $this->renderView('Stagiaire.twig',['etudiants' => $users]);
     }
 
     public function listEntreprise() {
@@ -95,13 +100,13 @@ class Controle {
     public function editEntreprise($NumEntreprise) {
         // Modifier une entreprise
         $user = $this->Prof1->getEntreprise($NumEntreprise);
-        echo $this->renderView('EntrepriseEdit.twig', ['num_entreprise' => $user]);
+        echo $this->renderView('EntrepriseEdit.twig', ['entreprise' => $user]);
     }
 
     public function editStagiere($NumEtudiant) {
         // Modifier un utilisateur
         $user = $this->Prof1->getStagiere($NumEtudiant);
-        echo $this->renderView('StagiaireEdit.twig', ['num_etudiant' => $user]);
+        echo $this->renderView('StagiaireEdit.twig', ['etudiant' => $user]);
     }
 
     public function createEntreprise() {

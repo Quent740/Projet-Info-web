@@ -19,6 +19,10 @@ switch ($action) {
         $controller = 'Controle';
         $method = 'Connection';
         break;
+    case 'inscrireStage':
+        $controller = 'Controle';
+        $method = 'inscrireStage';
+        break;
     //insrire Stagiaire
     case 'InscrireStagiaire':
         if ($Role == 'Professeur') {

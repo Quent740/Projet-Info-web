@@ -6,13 +6,13 @@ class Prof extends Stagiere {
 
     public function getAllStagiere() {
         $stmt = $this->pdo->query("SELECT * FROM etudiant");
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function getStagiere($NumEtudiant) {
         $stmt = $this->pdo->prepare("SELECT * FROM etudiant WHERE num_etudiant = ?");
         $stmt->execute([$NumEtudiant]);
-        return $stmt->fetch();
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
     public function createEntreprise($raisonSocial, $email, $NomContact, $NomResp, $Rue, $Ville, $CodePostal, $Tel, $Fax, $Observation, $SiteWeb, $Niveau, $EnActivite) {
@@ -26,7 +26,7 @@ class Prof extends Stagiere {
     }
 
     public function deleteEntreprise($numEntreprise) {
-        
+
             $this->pdo->beginTransaction(); // Début de la transaction
     
             // Supprimer les missions associées
