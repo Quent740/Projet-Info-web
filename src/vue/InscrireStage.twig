@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Accueil - Stage BTS</title>
+    <title>Inscription - Stage BTS</title>
     <link rel="stylesheet" href="CSS/general.css">
+    <link rel="stylesheet" href="CSS/formulaire.css"> <!-- Assurez-vous d'avoir un style adapté -->
 </head>
 <body>
 
@@ -17,7 +18,6 @@
     <a href="index.php?action=Aide" id="onglet_aide"><span>Aide</span></a>
     <a href="index.php?action=Deconnection" id="onglet_deconnection"><span>Déconnexion</span></a>
 
-    <!-- Boutons pour réduire/développer le menu -->
     <div class="bottom">
         <a href="#" id="icon_droite"><span></span></a>
         <a href="#" id="icon_gauche"><span></span></a>
@@ -27,19 +27,83 @@
 <!-- Zone de contenu principal -->
 <div id="corps">
     <header>
-        <h1>Bienvenue sur la page Stage BTS</h1>
+        <h1>Inscription à un Stage</h1>
     </header>
 
-    <hr>
+    <!-- Formulaire d'inscription -->
+    <form action="{{ action_url }}" method="post" id="form_inscription">
+        <!-- Section Contact -->
+        <div class="section" id="section_contact">
+            <h2>Contact</h2>
+            <div class="form-group">
+                <label for="entreprise">Entreprise* :</label>
+                <select name="entreprise" id="entreprise" required>
+                    {% for entreprise in entreprises %}
+                        <option value="{{ entreprise.id }}">{{ entreprise.nom }}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-    <article>
-        <p>Bienvenue sur le site Stage BTS. Ce site est destiné à faciliter la gestion de vos stages, avec des informations utiles pour les entreprises, les stagiaires, et bien plus encore.</p>
-    </article>
+            <div class="form-group">
+                <label for="etudiant">Étudiant* :</label>
+                <select name="etudiant" id="etudiant" required>
+                    {% for etudiant in etudiants %}
+                        <option value="{{ etudiant.id }}">{{ etudiant.nom }}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-    <div id="contenu">
-        <h2>Informations importantes</h2>
-        <p>Voici un message important pour les stagiaires et les entreprises. Vous trouverez ici toutes les informations nécessaires pour bien gérer vos relations de stage.</p>
-    </div>
+            <div class="form-group">
+                <label for="professeur">Professeur* :</label>
+                <select name="professeur" id="professeur" required>
+                    {% for professeur in professeurs %}
+                        <option value="{{ professeur.id }}">{{ professeur.nom }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <!-- Section Description du Stage -->
+        <div class="section" id="section_description_stage">
+            <h2>Description du Stage</h2>
+            <div class="form-group">
+                <label for="date_debut">Date de début du stage* :</label>
+                <input type="date" name="date_debut" id="date_debut" required>
+            </div>
+
+            <div class="form-group">
+                <label for="date_fin">Date de fin du stage* :</label>
+                <input type="date" name="date_fin" id="date_fin" required>
+            </div>
+
+            <div class="form-group">
+                <label for="type_stage">Type de stage* :</label>
+                <select name="type_stage" id="type_stage" required>
+                    <option value="aucun">Aucun</option>
+                    <option value="stage">Stage</option>
+                    <option value="alternance">Alternance</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="description_projet">Description du projet :</label>
+                <textarea name="description_projet" id="description_projet"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="observation">Observation :</label>
+                <textarea name="observation" id="observation"></textarea>
+            </div>
+        </div>
+
+        <!-- Note -->
+        <p class="info">Les champs comportant le symbole * sont obligatoires</p>
+
+        <!-- Bouton d'action -->
+        <div class="action">
+            <button type="submit" class="btn btn-primary">Inscrire</button>
+        </div>
+    </form>
 </div>
 
 </body>
