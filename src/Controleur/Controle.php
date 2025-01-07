@@ -83,12 +83,17 @@ class Controle {
         // Afficher la page d'accueil
         echo $this->renderView('inscrireStage.twig');
     }
-    
 
     public function listStagiere() {
         // Afficher la liste des utilisateurs
         $users = $this->Prof1->getAllStagiere();
         echo $this->renderView('Stagiaire.twig',['etudiants' => $users]);
+    }
+    
+    public function Entreprise($NumEntreprise) {
+        // Modifier une entreprise
+        $user = $this->Prof1->getEntreprise($NumEntreprise);
+        echo $this->renderView('EntrepriseEdit.twig', ['entreprise' => $user]);
     }
 
     public function listEntreprise() {

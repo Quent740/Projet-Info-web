@@ -104,6 +104,10 @@ switch ($action) {
         $controller = 'Controle';
         $method = 'listEntreprise';
         break;
+    case '1Entreprise':
+        $controller = 'Controle';
+        $method = 'Entreprise';
+        break;
     case 'Deconnection':
         $controller = 'Controle';
         $method = 'Deconnection';
