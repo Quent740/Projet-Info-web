@@ -38,6 +38,7 @@ class Controle {
     }
 
     public function Connection() {
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $login = $_POST['login'];
             $mdp = $_POST['mdp'];
@@ -58,6 +59,8 @@ class Controle {
                 $user = $stmt->fetch(\PDO::FETCH_ASSOC);
     
                 if ($user) {
+                    $_SESSION['role'] = $role;
+                    $_SESSION['login'] = $login;
                     // Si les identifiants sont corrects, redirection vers l'accueil
                     header('Location: index.php?action=Accueil');
                     exit;

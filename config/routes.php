@@ -1,9 +1,10 @@
 <?php
+session_start();
 // Récupérer les paramètres de l'URL
-$Role = $_POST['role'] ?? $_GET['role'] ?? null;
+$Role = $_SESSION['role'] ?? null;
 $action = $_GET['action'] ?? null; // Action de la route
 $id = $_GET['id'] ?? null;         // ID dans les routes (ex: pour 'edit', 'delete')
-$pdo = null;                        
+//$pdo = null;                        
 
 // Initialisation du contrôleur
 $controleur = 'Controle';
