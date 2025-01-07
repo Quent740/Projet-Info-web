@@ -19,22 +19,22 @@ switch ($action) {
         $method = 'Connection';
         break;
     //insrire Stagiaire
-    case 'Inscrire':
+    case 'InscrireStagiaire':
         $controller = 'Controle';
         $method = 'createStagiere';
         break;
     //peut etre pas besoin
-    case 'edit':
+    case 'editStagiaire':
         $controller = 'Controle';
         $method = 'editStagiere';
         break;
     //update stagiere
-    case 'update':
+    case 'updateStagiaire':
         $controller = 'Controle';
         $method = 'updateStagiere';
         break;
     //delet stagiere
-    case 'delete':
+    case 'deleteStagiaire':
         $controller = 'Controle';
         $method = 'deleteStagiere';
         break;
@@ -44,12 +44,12 @@ switch ($action) {
         $method = 'listStagiere';
         break;
     //peut etre pas besoin
-    case 'edit':
+    case 'editEntreprise':
         $controller = 'Controle';
         $method = 'editEntreprise';
         break;
     //update Entreprise
-    case 'update':
+    case 'updateEntreprise':
         $controller = 'Controle';
         $method = 'updateEntreprise';
         break;

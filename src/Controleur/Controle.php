@@ -24,11 +24,6 @@ class Controle {
         echo $this->renderView('accueil.twig');
     }
 
-    public function Inscrire() {
-        // Afficher la page d'accueil
-        echo $this->renderView('Inscrire.twig');
-    }
-
     public function Aide() {
         // Afficher la page d'accueil
         echo $this->renderView('Aide.twig');
