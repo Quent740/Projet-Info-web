@@ -14,41 +14,62 @@ switch ($action) {
         $controller = 'Controle';
         $method = 'accueil';
         break;
+    case 'Accueilconnexion':
+        $controller = 'Controle';
+        $method = 'Connection';
+        break;
+    //insrire Stagiaire
+    case 'Inscrire':
+        $controller = 'Controle';
+        $method = 'createStagiere';
+        break;
+    //peut etre pas besoin
     case 'edit':
         $controller = 'Controle';
-        $method = 'editUser';
+        $method = 'editStagiere';
         break;
+    //update stagiere
     case 'update':
         $controller = 'Controle';
-        $method = 'updateUser';
+        $method = 'updateStagiere';
         break;
+    //delet stagiere
     case 'delete':
         $controller = 'Controle';
-        $method = 'deleteUser';
+        $method = 'deleteStagiere';
         break;
+    //afichage stagiere
     case 'Stagiaire':
         $controller = 'Controle';
-        $method = 'Stagiaire';
+        $method = 'listStagiere';
         break;
+    //peut etre pas besoin
+    case 'edit':
+        $controller = 'Controle';
+        $method = 'editEntreprise';
+        break;
+    //update Entreprise
+    case 'update':
+        $controller = 'Controle';
+        $method = 'updateEntreprise';
+        break;
+    //delet Entreprise
+    case 'deleteEntreprise':
+        $controller = 'Controle';
+        $method = 'deleteEntreprise';
+        break;
+    //afichage entreprise
     case 'Entreprise':
         $controller = 'Controle';
-        $method = 'Entreprise';
+        $method = 'listEntreprise';
         break;
     case 'Deconnection':
         $controller = 'Controle';
         $method = 'Deconnection';
         break;
-    case 'Inscrire':
-        $controller = 'Controle';
-        $method = 'Inscrire';
-        break;
     case 'Aide':
         $controller = 'Controle';
         $method = 'Aide';
-        break;
-    case 'Accueilconnexion':
-        $controller = 'Controle';
-        $method = 'Connection';
         break;
     default:
         $controller = 'Controle';
