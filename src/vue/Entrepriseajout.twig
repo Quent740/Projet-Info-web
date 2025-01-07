@@ -25,34 +25,39 @@
 
 <div id="corps">
 
+    <form action="index.php?action=updateEntreprise&id={{ entreprise.num_entreprise }}" method="POST">
     <div class="container">
         <h2>{{ entreprise.nom }}</h2>
         <div>
             <h3>Entrée</h3>
-            <p>Nom de l'entreprise : {{ entreprise.nom }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Nom de l'entreprise : {{ entreprise.nom }} <input type="text" value="{{ etudiant.nom }}" required></p>
             <p>Nom du contact : {{ entreprise.contact }} <input type="text" value="{{ etudiant.nom }}"></p>
             <p>Nom du responsable : {{ entreprise.responsable }} <input type="text" value="{{ etudiant.nom }}"></p>
         </div>
         <div>
             <h3>Contact</h3>
-            <p>Rue : {{ entreprise.rue }} <input type="text" value="{{ etudiant.nom }}"></p>
-            <p>Code postal : {{ entreprise.code_postal }} <input type="text" value="{{ etudiant.nom }}"></p>
-            <p>Ville : {{ entreprise.ville }} <input type="text" value="{{ etudiant.nom }}"></p>
-            <p>Téléphone : {{ entreprise.telephone }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Rue : {{ entreprise.rue }} <input type="text" value="{{ etudiant.nom }}" required></p>
+            <p>Code postal : {{ entreprise.code_postal }} <input type="text" value="{{ etudiant.nom }}" required></p>
+            <p>Ville : {{ entreprise.ville }} <input type="text" value="{{ etudiant.nom }}" required></p>
+            <p>Téléphone : {{ entreprise.telephone }} <input type="text" value="{{ etudiant.nom }}" required></p>
             <p>Fax : {{ entreprise.fax }} <input type="text" value="{{ etudiant.nom }}"></p>
-            <p>Email : {{ entreprise.email }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Email : {{ entreprise.email }} <input type="text" value="{{ etudiant.nom }}" required></p>
         </div>
         <div>
             <h3>Divers</h3>
             <p>Observation : {{ entreprise.observation }} <input type="text" value="{{ etudiant.nom }}"></p>
-            <p>URL : <a href="{{ entreprise.url }}">{{ entreprise.url }}</a> <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>URL : <a href="{{ entreprise.url }}">{{ entreprise.url }}</a> <input type="text" value="{{ etudiant.nom }}" required></p>
             <p>Niveau : {{ entreprise.niveau }} <input type="text" value="{{ etudiant.nom }}"></p>
         </div>
         <div>
             <h3>Spécialité</h3>
             <p>Spécialité : {{ entreprise.specialite }} <input type="text" value="{{ etudiant.nom }}"></p>
         </div>
+        <div class="action">
+            <button type="submit" class="btn btn-primary">Valider l'ajout</button>
+        </div>
     </div>
+    </form>
 </div>
 
 </body>
