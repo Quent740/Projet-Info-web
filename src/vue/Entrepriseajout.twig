@@ -24,35 +24,33 @@
 </nav>
 
 <div id="corps">
-
-    <div class="container">
-        <h2>{{ entreprise.nom }}</h2>
+    <form action="index.php?action=createEntreprise" method="POST">
         <div>
             <h3>Entrée</h3>
-            <p>Nom de l'entreprise : {{ entreprise.nom }} <input type="text" value="{{ etudiant.nom }}"></p>
-            <p>Nom du contact : {{ entreprise.contact }} <input type="text" value="{{ etudiant.nom }}"></p>
-            <p>Nom du responsable : {{ entreprise.responsable }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Nom de l'entreprise : <input type="text" name="raison_sociale" required></p>
+            <p>Nom du contact : <input type="text" name="nom_contact" required></p>
+            <p>Nom du responsable : <input type="text" name="nom_resp" required></p>
         </div>
         <div>
             <h3>Contact</h3>
-            <p>Rue : {{ entreprise.rue }} <input type="text" value="{{ etudiant.nom }}"></p>
-            <p>Code postal : {{ entreprise.code_postal }} <input type="text" value="{{ etudiant.nom }}"></p>
-            <p>Ville : {{ entreprise.ville }} <input type="text" value="{{ etudiant.nom }}"></p>
-            <p>Téléphone : {{ entreprise.telephone }} <input type="text" value="{{ etudiant.nom }}"></p>
-            <p>Fax : {{ entreprise.fax }} <input type="text" value="{{ etudiant.nom }}"></p>
-            <p>Email : {{ entreprise.email }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Rue : <input type="text" name="rue_entreprise" required></p>
+            <p>Code postal : <input type="text" name="cp_entreprise" required></p>
+            <p>Ville : <input type="text" name="ville_entreprise" required></p>
+            <p>Téléphone : <input type="text" name="tel_entreprise" required></p>
+            <p>Fax : <input type="text" name="fax_entreprise"></p>
+            <p>Email : <input type="email" name="email" required></p>
         </div>
         <div>
             <h3>Divers</h3>
-            <p>Observation : {{ entreprise.observation }} <input type="text" value="{{ etudiant.nom }}"></p>
-            <p>URL : <a href="{{ entreprise.url }}">{{ entreprise.url }}</a> <input type="text" value="{{ etudiant.nom }}"></p>
-            <p>Niveau : {{ entreprise.niveau }} <input type="text" value="{{ etudiant.nom }}"></p>
+            <p>Observation : <input type="text" name="observation"></p>
+            <p>URL : <input type="text" name="site_entreprise"></p>
+            <p>Niveau : <input type="text" name="niveau" required></p>
         </div>
-        <div>
-            <h3>Spécialité</h3>
-            <p>Spécialité : {{ entreprise.specialite }} <input type="text" value="{{ etudiant.nom }}"></p>
+        <div class="action">
+            <button type="submit" class="btn btn-primary">Valider l'ajout</button>
         </div>
-    </div>
+    </form>
+
 </div>
 
 </body>

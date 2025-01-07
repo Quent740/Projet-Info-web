@@ -135,9 +135,8 @@ class Controle {
             $Observation = $_POST['observation'];
             $SiteWeb = $_POST['site_entreprise'];
             $Niveau = $_POST['niveau'];
-            $EnActivite = $_POST['en_activite'];
 
-            $this->Prof1->createEntreprise($raisonSocial, $email, $NomContact, $NomResp, $Rue, $Ville, $CodePostal, $Tel, $Fax, $Observation, $SiteWeb, $Niveau, $EnActivite);
+            $this->Prof1->createEntreprise($raisonSocial, $email, $NomContact, $NomResp, $Rue, $Ville, $CodePostal, $Tel, $Fax, $Observation, $SiteWeb, $Niveau);
             header("Location: /projet-info-web/public/index.php?action=Entreprise");
         } else {
             echo $this->renderView('Entrepriseajout.twig');
@@ -183,12 +182,11 @@ class Controle {
             $Login = $_POST['login'];
             $Mdp = $_POST['mdp'];
             $NumClasse = $_POST['num_classe'];
-            $EnActivite = $_POST['en_activite'];
 
-            $this->Prof1->createStagiere($NomEtudiant, $PrenomEtudiant, $AnneeObtention, $Login, $Mdp, $NumClasse, $EnActivite);
-            header("Location: /projet-info-web/public/index.php?action=Sagiaire");
+            $this->Prof1->createStagiere($NomEtudiant, $PrenomEtudiant, $AnneeObtention, $Login, $Mdp, $NumClasse);
+            header("Location: /projet-info-web/public/index.php?action=Stagiaire");
         } else {
-            echo $this->renderView('StagiaireEdit.twig');
+            echo $this->renderView('StagiaireAjout.twig');
         }
     }
 
@@ -204,7 +202,7 @@ class Controle {
             $EnActivite = $_POST['en_activite'];
 
             $this->Prof1->updateStagiere($NumEtudiant, $NomEtudiant, $PrenomEtudiant, $AnneeObtention, $Login, $Mdp, $NumClasse, $EnActivite);
-            header("Location: /projet-info-web/public/index.php?action=Sagiaire");
+            header("Location: /projet-info-web/public/index.php?action=Stagiaire");
         }
     }
 

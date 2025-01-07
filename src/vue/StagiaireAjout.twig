@@ -1,0 +1,63 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Mise à jour Étudiant - Stage BTS</title>
+    <link rel="stylesheet" href="CSS/general.css">
+</head>
+<body>
+
+<!-- Menu de navigation -->
+<nav>
+    <a href="index.php?action=Accueil" id="onglet_accueil"><span>Accueil</span></a>
+    <a href="index.php?action=Entreprise" id="onglet_entreprise"><span>Entreprise</span></a>
+    <a href="index.php?action=Stagiaire" id="onglet_stagiaire" class="actif"><span>Stagiaire</span></a>
+    <a href="index.php?action=inscrireStage" id="onglet_inscrire"><span>Inscription</span></a>
+    <a href="index.php?action=Aide" id="onglet_aide"><span>Aide</span></a>
+    <a href="index.php?action=Deconnection" id="onglet_deconnection"><span>Déconnexion</span></a>
+
+    <!-- Boutons pour réduire/développer le menu -->
+    <div class="bottom">
+        <a href="#" id="icon_droite"><span></span></a>
+        <a href="#" id="icon_gauche"><span></span></a>
+    </div>
+</nav>
+
+<!-- Contenu principal -->
+<div id="corps">
+    <div class="container">
+        <h2>Ajout d'un etudiant</h2>
+
+        <!-- Formulaire de mise à jour -->
+        <form action="index.php?action=InscrireStagiaire" method="post">
+            <div>
+                <h3>Informations de l'étudiant</h3>
+                <label for="nom_etudiant">Nom :</label>
+                <input type="text" name="nom_etudiant" id="nom_etudiant" required>
+
+                <label for="prenom_etudiant">Prénom :</label>
+                <input type="text" name="prenom_etudiant" id="prenom_etudiant" required>
+
+                <label for="annee_obtention">Année d'obtention :</label>
+                <input type="text" name="annee_obtention" id="annee_obtention" required>
+
+                <label for="login">Login :</label>
+                <input type="text" name="login" id="login" required>
+
+                <label for="mdp">Mot de passe :</label>
+                <input type="password" name="mdp" id="mdp" required>
+
+                <label for="num_classe">Numéro de classe :</label>
+                <input type="text" name="num_classe" id="num_classe" required>
+            </div>
+
+            <!-- Bouton pour valider la mise à jour -->
+            <div class="action">
+                <button type="submit" class="btn btn-primary">Valider l'ajout</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
